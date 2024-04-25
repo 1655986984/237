@@ -20,6 +20,12 @@ sed -i 's/ImmortalWrt/RAX3000M/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt-2.4G/CMCC_2.4G/g' package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 sed -i 's/ImmortalWrt-5G/CMCC_5G/g' package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 
+#wifi加密方式，没有是none
+sed -i 's/encryption=none/encryption=psk2/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+#wifi密码
+sed -i 's/key=15581822425/key=1234567890/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
 #修改闪存为256M版本(这是针对原厂128闪存来的，但又要编译256M固件来的）
 #sed -i 's/<0x580000 0x7200000>/<0x580000 0xee00000>/g' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m.dts
 #sed -i 's/116736k/240128k/g' target/linux/mediatek/image/mt7981.mk
